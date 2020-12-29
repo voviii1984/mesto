@@ -1,4 +1,4 @@
-.form__input_name {
+.form__input-name {
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -9,7 +9,7 @@
   min-height: 27px;
 }
 
-.form__input_name:focus {
+.form__input-name:focus {
   outline: 2px solid #29B0D9;
   box-shadow: 0 0 10px 5px #29B0D9;
 }

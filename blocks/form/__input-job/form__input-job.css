@@ -1,4 +1,4 @@
-.form__input_job {
+.form__input-job {
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -10,7 +10,7 @@
   min-height: 27px;
 }
 
-.form__input_job:focus {
+.form__input-job:focus {
   outline: 2px solid #29B0D9;
   box-shadow: 0 0 10px 5px #29B0D9;
 }
