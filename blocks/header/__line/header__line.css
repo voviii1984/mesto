@@ -10,3 +10,9 @@
     margin-top: 27px;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .header__line {
+    width: 100%;
+  }
+}

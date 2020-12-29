@@ -2,11 +2,12 @@
   max-width: 880px;
   margin: auto;
   padding-top: 45px;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 879px) {
   .header {
-    width: 581px;
+    max-width: 581px;
   }
 }
 
