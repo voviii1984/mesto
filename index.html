@@ -9,31 +9,91 @@
 <body>
   <div class="page">
     <header class="header">
-      <img src="" alt="Место" class="header__logo">
+      <img src="./images/logo.svg" alt="Место" class="header__logo">
       <div class="header__line"></div>
     </header>
 
     <main class="content">
       <section class="profile">
-        <img src="" alt="Жак-Ив Кусто" class="profile__avatar">
+        <img src="./images/kusto.jpg" alt="Жак-Ив Кусто" class="profile__avatar">
+        <div class="profile__info">
+          <div class="profile__infos">
+          <h1 class="profile__info_title">Жак-Ив Кусто</h1>
+          <img src="./images/editbutton.svg" alt="Кнопка" class="profile__popup-button">
+          </div>
+          <h2 class="profile__info_text">Исследователь океана</h2>
+        </div>
         
+        <div class="profile__add-button"></div>
       </section>
       
       <section class="elements">
         <div class="element">
-          <img src="" alt="" class="element__image">
+          <img src="./images/luna.jpg" alt="Луна" class="element__image">
           <div class="element__group">
-            <h2 class="element__text"></h2>
-            <img src="" alt="" class="element__vector">
+            <h2 class="element__text">Луна</h2>
+            <img src="./images/like.png" alt="Лайк" class="element__vector">
+          </div>
+        </div>
+
+        <div class="element">
+          <img src="./images/kanion.jpg" alt="Каньон в Арзоне" class="element__image">
+          <div class="element__group">
+            <h2 class="element__text">Каньон в Аризоне</h2>
+            <img src="./images/like.png" alt="Лайк" class="element__vector">
+          </div>
+        </div>
+
+        <div class="element">
+          <img src="./images/zima.jpg" alt="Сибирь" class="element__image">
+          <div class="element__group">
+            <h2 class="element__text">Сибирь</h2>
+            <img src="./images/like.png" alt="Лайк" class="element__vector">
+          </div>
+        </div>
+
+        <div class="element">
+          <img src="./images/elbrus.jpg" alt="Гора Эльбрус" class="element__image">
+          <div class="element__group">
+            <h2 class="element__text">Гора Эльбрус</h2>
+            <img src="./images/like.png" alt="Лайк" class="element__vector">
+          </div>
+        </div>
+
+        <div class="element">
+          <img src="./images/dombai.jpg" alt="Домбай" class="element__image">
+          <div class="element__group">
+            <h2 class="element__text">Домбай</h2>
+            <img src="./images/like.png" alt="Лайк" class="element__vector">
+          </div>
+        </div>
+
+        <div class="element">
+          <img src="./images/karschaevsk.jpg" alt="Карачаево-Черкесия" class="element__image">
+          <div class="element__group">
+            <h2 class="element__text">Карачаево-Черкесия</h2>
+            <img src="./images/like.png" alt="Лайк" class="element__vector">
           </div>
         </div>
       </section>
     </main>
 
     <footer class="footer">
-      <h2>&copy; 2020 Mesto Russia</h2>
+      <h2 class="footer__text">&copy; 2020 Mesto Russia</h2>
     </footer>
+
+    <secion class="popup">
+      <div class="popup__container">
+        <h2 class="popup__container_title">Редактировать профиль</h2>
+        <form class="form">
+          <input type="text" class="form__input_name"/>
+          <input type="text" class="form__input_job"/>
+          <button type="submit" class="form__submit">Сохранить</button>
+        </form>
+        <span class="popup__close"></span>
+      </div>
+    </secion>
   </div>
-    
+<script src="./script/script.js"></script> 
 </body>
 </html>

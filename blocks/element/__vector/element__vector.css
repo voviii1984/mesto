@@ -1,0 +1,16 @@
+.element__vector {
+  width: 20.76px;
+  height: 18.13px;
+  margin: 0;
+  cursor: pointer;
+}
+
+.element__vector:hover {
+  opacity: 0.6;
+}
+
+.element__vector:active {
+  background-image: url(../../../images/likeactive.png);
+  opacity: 1;
+  height: fit-content;
+}
