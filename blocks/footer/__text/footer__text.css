@@ -1,5 +1,4 @@
 .footer__text {
-  font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
@@ -8,7 +7,7 @@
   margin: 0;
 }
 
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 618px) {
   .footer__text {
     font-size: 14px;
     line-height: 17px;

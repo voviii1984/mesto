@@ -3,15 +3,16 @@
   margin: auto;
   padding-top: 45px;
   overflow: hidden;
+  border-bottom: 1px solid #545454;
 }
 
-@media screen and (max-width: 879px) {
+@media screen and (max-width: 917px) {
   .header {
     max-width: 581px;
   }
 }
 
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 618px) {
   .header {
     max-width: 320px;
     padding-top: 28px;

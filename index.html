@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto</title>
-    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="./style/index.css">
 </head>
 <body>
   <div class="page">
     <header class="header">
       <img src="./images/logo.svg" alt="Место" class="header__logo">
-      <div class="header__line"></div>
     </header>
 
     <main class="content">
@@ -19,12 +18,12 @@
         <div class="profile__info">
           <div class="profile__infos">
           <h1 class="profile__info-title">Жак-Ив Кусто</h1>
-          <img src="./images/editbutton.svg" alt="Кнопка" class="profile__popup-button">
+          <button type="submit" class="profile__popup-button"></button>
           </div>
           <h2 class="profile__info-text">Исследователь океана</h2>
         </div>
         
-        <div class="profile__add-button"></div>
+        <button type="button" class="profile__add-button"></button>
       </section>
       
       <section class="elements">
@@ -82,17 +81,17 @@
       <h2 class="footer__text">&copy; 2020 Mesto Russia</h2>
     </footer>
 
-    <secion class="popup">
+    <section class="popup">
       <div class="popup__container">
         <h2 class="popup__container-title">Редактировать профиль</h2>
         <form class="form">
-          <input type="text" class="form__input-name"/>
-          <input type="text" class="form__input-job"/>
+          <input type="text" id="inputname" class="form__input"/>
+          <input type="text" id="inputjob" class="form__input"/>
           <button type="submit" class="form__submit">Сохранить</button>
         </form>
-        <span class="popup__close"></span>
+        <button type="reset" class="popup__close"></button>
       </div>
-    </secion>
+    </section>
   </div>
 <script src="./script/script.js"></script> 
 </body>

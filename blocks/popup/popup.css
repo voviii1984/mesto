@@ -11,7 +11,7 @@
   align-items: flex-start;
 }
 
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 618px) {
   .popup {
     padding-top: 123px;
   }

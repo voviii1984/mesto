@@ -3,7 +3,7 @@
   margin-top: 40px;
 }
 
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 618px) {
   .profile {
     display: grid;
     margin-top: 42px;
