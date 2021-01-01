@@ -5,8 +5,8 @@ let closeSubmit = popup.querySelector('.form__submit')
 let formElement = popup.querySelector('.form')
 let profileinfotitle = document.querySelector('.profile__info-title')
 let profileinfotext = document.querySelector('.profile__info-text')
-let inputname = document.getElementById('inputname')
-let inputjob = document.getElementById('inputjob')
+let inputName = document.getElementById('inputName')
+let inputJob = document.getElementById('inputJob')
 
 let togglePopup = () => {
     popup.classList.toggle('popup_opened')
@@ -21,15 +21,15 @@ popup.addEventListener('click', (event) => {
 })
 
 function addProfileInfo() {
-    inputname.value = profileinfotitle.textContent
-    inputjob.value = profileinfotext.textContent
+    inputName.value = profileinfotitle.textContent
+    inputJob.value = profileinfotext.textContent
 }
 addProfileInfo()
 
 function handleFormSubmit (evt) {
     evt.preventDefault();
-    profileinfotitle.textContent = inputname.value
-    profileinfotext.textContent = inputjob.value    
+    profileinfotitle.textContent = inputName.value
+    profileinfotext.textContent = inputJob.value    
 }
 
 formElement.addEventListener('submit', handleFormSubmit);

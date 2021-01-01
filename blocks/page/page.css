@@ -3,4 +3,5 @@
   margin: 0 auto;
   font-family: 'Inter', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
+  min-width: 320px;
 }
