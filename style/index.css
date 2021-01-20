@@ -19,6 +19,7 @@
 @import url(../blocks/element/__group/element__group.css);
 @import url(../blocks/element/__text/element__text.css);
 @import url(../blocks/element/__vector/element__vector.css);
+@import url(../blocks/element/__vector/_active/element__vector_active.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__text/footer__text.css);
 @import url(../blocks/popup/popup.css);

@@ -25,25 +25,49 @@ const initialCards = [
     }
   ]; 
   
-let openButton = document.querySelector('.profile__popup-button')
-let popup = document.querySelector('.popup')
-let closeButton = popup.querySelector('.popup__close')
-let closeSubmit = popup.querySelector('.form__submit')
-let formElement = popup.querySelector('.form')
-let profileinfotitle = document.querySelector('.profile__info-title')
-let profileinfotext = document.querySelector('.profile__info-text')
-let inputName = document.getElementById('inputName')
-let inputJob = document.getElementById('inputJob')
+const openButton = document.querySelector('.profile__popup-button')
+const popup = document.querySelector('.popup')
+const closeButton = document.querySelector('.popup__close')
+const saveElement = document.getElementById('saveElement')
+const formElement = document.querySelector('.form')
+const profileinfotitle = document.querySelector('.profile__info-title')
+const profileinfotext = document.querySelector('.profile__info-text')
+const inputName = document.getElementById('inputName')
+const inputJob = document.getElementById('inputJob')
+const addButton = document.querySelector('.profile__add-button')
+const popupAdd = document.querySelector('.popup__add')
+const closeAddButton = document.getElementById('closeAddButton')
+const addImage = document.getElementById('addImage')
+const addName = document.getElementById('addName')
+const elementsTemplate = document.querySelector('.card__template').content
+const cardElement = document.querySelector('.elements')
+const element = document.querySelector('.element')
+const saveAddCard = document.getElementById('saveAddCard')
+const addForm = document.getElementById('addForm')
 
-let togglePopup = () => {
+const togglePopup = () => {
     popup.classList.toggle('popup_opened')
 }
-openButton.addEventListener('click', togglePopup) 
+
+openButton.addEventListener('click', togglePopup)
 closeButton.addEventListener('click', togglePopup)
-closeSubmit.addEventListener('click', togglePopup)
-popup.addEventListener('click', (event) => {
-    if (event.target === event.currentTarget) {
+saveElement.addEventListener('click', togglePopup)
+popup.addEventListener('click', (evt) => {
+    if (evt.target === evt.currentTarget) {
         togglePopup()
+    }
+})
+
+const togglePopupAdd = () => {
+    popupAdd.classList.toggle('popup_opened')
+}
+
+addButton.addEventListener('click', togglePopupAdd)
+closeAddButton.addEventListener('click', togglePopupAdd)
+saveAddCard.addEventListener('click', togglePopupAdd)
+popupAdd.addEventListener('click', (evt) => {
+    if (evt.target === evt.currentTarget) {
+        togglePopupAdd()
     }
 })
 
@@ -61,24 +85,34 @@ function handleFormSubmit (evt) {
 
 formElement.addEventListener('submit', handleFormSubmit);
 
-const elementsTemplate = document.querySelector('.card__template').content
-const cardElement = document.querySelector('.elements')
-/*const delButton = document.querySelector('.element__close')*/
-const likeButton = document.querySelector('.element__vector')
-
 function addCardElement() {
     initialCards.forEach(addElement)
 }
-
 
 function addElement(item) {
     const htmlElement = elementsTemplate.cloneNode(true)
     htmlElement.querySelector('.element__text').textContent = item.name
     htmlElement.querySelector('.element__image').src = item.link
-
     htmlElement.querySelector('.element__close').addEventListener('click', delButton)
-    cardElement.appendChild(htmlElement)
+    htmlElement.querySelector('.element__vector').addEventListener('click', function(evt) {
+        evt.target.classList.toggle('element__vector_active')
+    })
+    cardElement.appendChild(htmlElement)  
 }
+
+function handleSubmit (evt) {
+    evt.preventDefault()
+    const htmlElement = elementsTemplate.cloneNode(true)
+    htmlElement.querySelector('.element__text').textContent = addName.value
+    htmlElement.querySelector('.element__image').src = addImage.value
+    htmlElement.querySelector('.element__close').addEventListener('click', delButton)
+    htmlElement.querySelector('.element__vector').addEventListener('click', function(evt) {
+        evt.target.classList.toggle('element__vector_active')
+    })    
+    cardElement.prepend(htmlElement)    
+}
+
+addForm.addEventListener('submit', handleSubmit)
 
 addCardElement()
 
