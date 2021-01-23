@@ -35,7 +35,7 @@ const profileinfotext = document.querySelector('.profile__info-text')
 const inputName = document.getElementById('inputName')
 const inputJob = document.getElementById('inputJob')
 const addButton = document.querySelector('.profile__add-button')
-const popupAdd = document.querySelector('.popup__add')
+const popupMesto = document.getElementById('popupMesto')
 const closeAddButton = document.getElementById('closeAddButton')
 const closeImageButton = document.getElementById('closeImageButton')
 const addImage = document.getElementById('addImage')
@@ -44,16 +44,16 @@ const elementsTemplate = document.querySelector('.card__template').content
 const cardElement = document.querySelector('.elements')
 const saveAddCard = document.getElementById('saveAddCard')
 const addForm = document.getElementById('addForm')
-const popupImage = document.querySelector('.popup__image')
-const popupImageCard = document.querySelector('.popup__image_card')
-const popupImageText = document.querySelector('.popup__image_text')
+const popupImage = document.querySelector('.popup-image')
+const popupImageCard = document.querySelector('.popup-image__card')
+const popupImageText = document.querySelector('.popup-image__text')
 
 const togglePopup = () => {
     popup.classList.toggle('popup_opened')
 }
 
 const togglePopupAdd = () => {
-    popupAdd.classList.toggle('popup_opened')
+    popupMesto.classList.toggle('popup_opened')
 }
 
 const handeladdImag = () => {
@@ -72,7 +72,7 @@ popup.addEventListener('click', (evt) => {
 addButton.addEventListener('click', togglePopupAdd)
 closeAddButton.addEventListener('click', togglePopupAdd)
 saveAddCard.addEventListener('click', togglePopupAdd)
-popupAdd.addEventListener('click', (evt) => {
+popupMesto.addEventListener('click', (evt) => {
     if (evt.target === evt.currentTarget) {
         togglePopupAdd()
     }
