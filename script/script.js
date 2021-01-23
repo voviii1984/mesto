@@ -37,16 +37,27 @@ const inputJob = document.getElementById('inputJob')
 const addButton = document.querySelector('.profile__add-button')
 const popupAdd = document.querySelector('.popup__add')
 const closeAddButton = document.getElementById('closeAddButton')
+const closeImageButton = document.getElementById('closeImageButton')
 const addImage = document.getElementById('addImage')
 const addName = document.getElementById('addName')
 const elementsTemplate = document.querySelector('.card__template').content
 const cardElement = document.querySelector('.elements')
-const element = document.querySelector('.element')
 const saveAddCard = document.getElementById('saveAddCard')
 const addForm = document.getElementById('addForm')
+const popupImage = document.querySelector('.popup__image')
+const popupImageCard = document.querySelector('.popup__image_card')
+const popupImageText = document.querySelector('.popup__image_text')
 
 const togglePopup = () => {
     popup.classList.toggle('popup_opened')
+}
+
+const togglePopupAdd = () => {
+    popupAdd.classList.toggle('popup_opened')
+}
+
+const handeladdImag = () => {
+    popupImage.classList.toggle('popup_opened')
 }
 
 openButton.addEventListener('click', togglePopup)
@@ -58,16 +69,19 @@ popup.addEventListener('click', (evt) => {
     }
 })
 
-const togglePopupAdd = () => {
-    popupAdd.classList.toggle('popup_opened')
-}
-
 addButton.addEventListener('click', togglePopupAdd)
 closeAddButton.addEventListener('click', togglePopupAdd)
 saveAddCard.addEventListener('click', togglePopupAdd)
 popupAdd.addEventListener('click', (evt) => {
     if (evt.target === evt.currentTarget) {
         togglePopupAdd()
+    }
+})
+
+closeImageButton.addEventListener('click', handeladdImag)
+popupImage.addEventListener('click', (evt) => {
+    if (evt.target === evt.currentTarget) {
+        handeladdImag()
     }
 })
 
@@ -93,10 +107,8 @@ function addElement(item) {
     const htmlElement = elementsTemplate.cloneNode(true)
     htmlElement.querySelector('.element__text').textContent = item.name
     htmlElement.querySelector('.element__image').src = item.link
-    htmlElement.querySelector('.element__close').addEventListener('click', delButton)
-    htmlElement.querySelector('.element__vector').addEventListener('click', function(evt) {
-        evt.target.classList.toggle('element__vector_active')
-    })
+    
+    handelElement(htmlElement)
     cardElement.appendChild(htmlElement)  
 }
 
@@ -105,14 +117,26 @@ function handleSubmit (evt) {
     const htmlElement = elementsTemplate.cloneNode(true)
     htmlElement.querySelector('.element__text').textContent = addName.value
     htmlElement.querySelector('.element__image').src = addImage.value
+    
+    handelElement(htmlElement)
+    cardElement.prepend(htmlElement)    
+}
+addForm.addEventListener('submit', handleSubmit)
+
+function handelElement(htmlElement) {
     htmlElement.querySelector('.element__close').addEventListener('click', delButton)
     htmlElement.querySelector('.element__vector').addEventListener('click', function(evt) {
         evt.target.classList.toggle('element__vector_active')
-    })    
-    cardElement.prepend(htmlElement)    
+    })
+    
+    htmlElement.querySelector('.element__image').addEventListener('click', handeladdImag)
+    htmlElement.querySelector('.element__image').addEventListener('click', openImage)
 }
 
-addForm.addEventListener('submit', handleSubmit)
+function openImage(evt) {
+    popupImageCard.src = evt.target.closest('.element').querySelector('.element__image').src
+    popupImageText.textContent = evt.target.closest('.element').querySelector('.element__text').textContent
+}
 
 addCardElement()
 

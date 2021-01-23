@@ -59,21 +59,21 @@
     <section class="popup popup__add">
       <div class="popup__container">
         <h2 class="popup__container-title">Новое место</h2>
-        <form id="addForm" class="form">
+        <form id="addForm" class="form__add">
           <input type="text" id="addName" class="form__input" placeholder="Название"/>
           <input type="text" id="addImage" class="form__input" placeholder="Ссылка на картинку"/>
-          <button type="submit" id="saveAddCard" class="form__submit">Создать</button>
+          <button type="submit" id="saveAddCard" class="form__submit_add">Создать</button>
         </form>
         <button type="reset" id="closeAddButton" class="popup__close"></button>
       </div>
     </section>
 
-    <section class="popup popup__image">
-      <form class="popup__image_container">
-        <button type="reset" id="closeAddButton" class="popup__image_close"></button>
+    <section class="popup__image">
+      <div class="popup__image_container">        
+        <button type="reset" id="closeImageButton" class="popup__image_close"></button>
         <img src="" alt="Изображение" class="popup__image_card">
         <h2 class="popup__image_text"></h2>
-      </form>
+      </div>
     </section>
   </div>
 <script src="./script/script.js"></script> 
