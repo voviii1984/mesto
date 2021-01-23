@@ -13,7 +13,7 @@
   opacity: 0.6;
 }
 
-.element__vector:active {
+/*.element__vector:active {
   background-image: url(../../../images/likeactive.png);
   opacity: 1;
-}
+}*/

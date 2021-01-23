@@ -2,12 +2,12 @@
   position: absolute;
   width: 48px;
   height: 48px;
-  background-image: url(../../../images/closeicon.png);
+  background: url(../../../images/closeicon.png);
   top: -49px;
   right: -39px;
   cursor: pointer;
-  background-color: #000000;
   border: 0;
+  outline: 0;
 }
 
 .popup__close:hover {
@@ -16,7 +16,7 @@
 
 @media screen and (max-width: 618px) {
   .popup__close {
-   background-image: url(../../../images/closeicon2.png);
+   background: url(../../../images/closeicon2.png);
    width: 29px;
    height: 29px;
    top: -51px;

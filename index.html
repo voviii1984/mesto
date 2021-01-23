@@ -27,54 +27,17 @@
       </section>
       
       <section class="elements">
-        <div class="element">
-          <img src="./images/luna.jpg" alt="Луна" class="element__image">
-          <div class="element__group">
-            <h2 class="element__text">Луна</h2>
-            <button type="button" name="Like" class="element__vector"></button>
+        <template class="card__template">
+          <div class="element">
+            <img src="#" alt="Изображение" class="element__image">
+            <button type="reset" class="element__close"></button>
+            <div class="element__group">
+              <h2 class="element__text"></h2>
+              <button type="button" name="Like" class="element__vector"></button>
+            </div>
           </div>
-        </div>
-
-        <div class="element">
-          <img src="./images/kanion.jpg" alt="Каньон в Арзоне" class="element__image">
-          <div class="element__group">
-            <h2 class="element__text">Каньон в Аризоне</h2>
-            <button type="button" name="Like" class="element__vector"></button>
-          </div>
-        </div>
-
-        <div class="element">
-          <img src="./images/zima.jpg" alt="Сибирь" class="element__image">
-          <div class="element__group">
-            <h2 class="element__text">Сибирь</h2>
-            <button type="button" name="Like" class="element__vector"></button>
-          </div>
-        </div>
-
-        <div class="element">
-          <img src="./images/elbrus.jpg" alt="Гора Эльбрус" class="element__image">
-          <div class="element__group">
-            <h2 class="element__text">Гора Эльбрус</h2>
-            <button type="button" name="Like" class="element__vector"></button>
-          </div>
-        </div>
-
-        <div class="element">
-          <img src="./images/dombai.jpg" alt="Домбай" class="element__image">
-          <div class="element__group">
-            <h2 class="element__text">Домбай</h2>
-            <button type="button" name="Like" class="element__vector"></button>
-          </div>
-        </div>
-
-        <div class="element">
-          <img src="./images/karschaevsk.jpg" alt="Карачаево-Черкесия" class="element__image">
-          <div class="element__group">
-            <h2 class="element__text">Карачаево-Черкесия</h2>
-            <button type="button" name="Like" class="element__vector"></button>
-          </div>
-        </div>
-      </section>
+        </template>
+      </section> 
     </main>
 
     <footer class="footer">
@@ -87,9 +50,29 @@
         <form class="form">
           <input type="text" id="inputName" class="form__input"/>
           <input type="text" id="inputJob" class="form__input"/>
-          <button type="submit" class="form__submit">Сохранить</button>
+          <button type="submit" id="saveElement" class="form__submit">Сохранить</button>
         </form>
         <button type="reset" class="popup__close"></button>
+      </div>
+    </section>
+
+    <section id="popupMesto" class="popup">
+      <div class="popup__container">
+        <h2 class="popup__container-title">Новое место</h2>
+        <form id="addForm" class="form-mesto">
+          <input type="text" id="addName" class="form__input" placeholder="Название"/>
+          <input type="text" id="addImage" class="form__input" placeholder="Ссылка на картинку"/>
+          <button type="submit" id="saveAddCard" class="form-mesto__submit">Создать</button>
+        </form>
+        <button type="reset" id="closeAddButton" class="popup__close"></button>
+      </div>
+    </section>
+
+    <section class="popup-image">
+      <div class="popup-image__container">        
+        <button type="reset" id="closeImageButton" class="popup-image__close"></button>
+        <img src="#" alt="Изображение" class="popup-image__card">
+        <h2 class="popup-image__text"></h2>
       </div>
     </section>
   </div>
