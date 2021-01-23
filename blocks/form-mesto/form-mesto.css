@@ -1,4 +1,4 @@
-.form__add {
+.form-mesto {
   display: flex;
   flex-direction: column;
   margin: 21px auto 37px auto;
@@ -6,7 +6,7 @@
 }
 
 @media screen and (max-width: 618px) {
-  .form__add {
+  .form-mesto {
     max-width: 238px;
     margin: 44px auto 25px auto;
   }

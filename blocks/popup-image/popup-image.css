@@ -1,4 +1,4 @@
-.popup__image {
+.popup-image {
   display: flex;
   justify-content: center;
   position: fixed;
@@ -15,7 +15,7 @@
 }
     
 @media screen and (max-width: 618px) {
-  .popup__image {
+  .popup-image {
     padding-top: 136px;
   }
 }
