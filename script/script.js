@@ -45,8 +45,8 @@ const cardElements = document.querySelector('.elements')
 const saveAddCard = document.getElementById('saveAddCard')
 const addForm = document.getElementById('addForm')
 const popupTypeImage = document.querySelector('.popup_type_image')
-const popupContentCard = document.querySelector('.popup__content_card')
-const popupContentText = document.querySelector('.popup__content_text')
+const imageContainerCard = document.querySelector('.image-container__card')
+const imageContainerText = document.querySelector('.image-container__text')
 const popupContentContentImage = document.querySelector('.popup__content_content_image')
 
 const openPopup = (popup) => {
@@ -152,8 +152,8 @@ function setListeners(htmlElement) {
 }
 
 function openImage(evt) {
-    popupContentCard.src = evt.target.closest('.element').querySelector('.element__image').src
-    popupContentText.textContent = evt.target.closest('.element').querySelector('.element__text').textContent
+    imageContainerCard.src = evt.target.closest('.element').querySelector('.element__image').src
+    imageContainerText.textContent = evt.target.closest('.element').querySelector('.element__text').textContent
 }
 
 addCardElement()
