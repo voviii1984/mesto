@@ -26,7 +26,7 @@ const initialCards = [
   ]; 
   
 const openButton = document.querySelector('.profile__popup-button')
-const popup = document.querySelector('.popup')
+const popupTypeEdit = document.querySelector('.popup_type_edit')
 const closeButton = document.querySelector('.popup__close')
 const saveElement = document.getElementById('saveElement')
 const formElement = document.querySelector('.form')
@@ -35,53 +35,64 @@ const profileinfotext = document.querySelector('.profile__info-text')
 const inputName = document.getElementById('inputName')
 const inputJob = document.getElementById('inputJob')
 const addButton = document.querySelector('.profile__add-button')
-const popupMesto = document.getElementById('popupMesto')
+const popupTypeAddCard = document.querySelector('.popup_type_add-card')
 const closeAddButton = document.getElementById('closeAddButton')
 const closeImageButton = document.getElementById('closeImageButton')
 const addImage = document.getElementById('addImage')
 const addName = document.getElementById('addName')
 const elementsTemplate = document.querySelector('.card__template').content
-const cardElement = document.querySelector('.elements')
+const cardElements = document.querySelector('.elements')
 const saveAddCard = document.getElementById('saveAddCard')
 const addForm = document.getElementById('addForm')
-const popupImage = document.querySelector('.popup-image')
+const popupTypeImage = document.querySelector('.popup_type_image')
 const popupImageCard = document.querySelector('.popup-image__card')
 const popupImageText = document.querySelector('.popup-image__text')
+const popupContentContentImage = document.querySelector('.popup__content_content_image')
 
-const togglePopup = () => {
-    popup.classList.toggle('popup_opened')
+const openPopup = (popup) => {
+    popup.classList.add('popup_opened')
 }
 
-const togglePopupAdd = () => {
-    popupMesto.classList.toggle('popup_opened')
+const closePopup = (popup) => {
+    popup.classList.remove('popup_opened')
 }
 
-const handeladdImag = () => {
-    popupImage.classList.toggle('popup_opened')
-}
-
-openButton.addEventListener('click', togglePopup)
-closeButton.addEventListener('click', togglePopup)
-saveElement.addEventListener('click', togglePopup)
-popup.addEventListener('click', (evt) => {
+openButton.addEventListener('click', () => {
+    openPopup(popupTypeEdit)
+})
+closeButton.addEventListener('click', () => {
+    closePopup(popupTypeEdit)
+})
+saveElement.addEventListener('click', () => {
+    closePopup(popupTypeEdit)
+})
+popupTypeEdit.addEventListener('click', (evt) => {
     if (evt.target === evt.currentTarget) {
-        togglePopup()
+        closePopup(popupTypeEdit)
     }
 })
 
-addButton.addEventListener('click', togglePopupAdd)
-closeAddButton.addEventListener('click', togglePopupAdd)
-saveAddCard.addEventListener('click', togglePopupAdd)
-popupMesto.addEventListener('click', (evt) => {
+addButton.addEventListener('click', () => {
+    openPopup(popupTypeAddCard)
+})
+closeAddButton.addEventListener('click', () => {
+    closePopup(popupTypeAddCard)
+})
+saveAddCard.addEventListener('click', () => {
+    closePopup(popupTypeAddCard)
+})
+popupTypeAddCard.addEventListener('click', (evt) => {
     if (evt.target === evt.currentTarget) {
-        togglePopupAdd()
+        closePopup(popupTypeAddCard)
     }
 })
 
-closeImageButton.addEventListener('click', handeladdImag)
-popupImage.addEventListener('click', (evt) => {
+closeImageButton.addEventListener('click', () => {
+    closePopup(popupTypeImage)
+})
+popupContentContentImage.addEventListener('click', (evt) => {
     if (evt.target === evt.currentTarget) {
-        handeladdImag()
+        closePopup(popupTypeImage)
     }
 })
 
@@ -100,37 +111,44 @@ function handleFormSubmit (evt) {
 formElement.addEventListener('submit', handleFormSubmit);
 
 function addCardElement() {
-    initialCards.forEach(addElement)
+    initialCards.forEach((data) => {
+        const card = getCardElement(data)
+        renderCards(card)    
+     })
 }
 
-function addElement(item) {
+function getCardElement(item) {
     const htmlElement = elementsTemplate.cloneNode(true)
     htmlElement.querySelector('.element__text').textContent = item.name
     htmlElement.querySelector('.element__image').src = item.link
     
-    handelElement(htmlElement)
-    cardElement.appendChild(htmlElement)  
+    setListeners(htmlElement)
+    return htmlElement
+}
+
+function renderCards(add) {
+    return cardElements.appendChild(add)
 }
 
 function handleSubmit (evt) {
     evt.preventDefault()
-    const htmlElement = elementsTemplate.cloneNode(true)
-    htmlElement.querySelector('.element__text').textContent = addName.value
-    htmlElement.querySelector('.element__image').src = addImage.value
-    
-    handelElement(htmlElement)
-    cardElement.prepend(htmlElement)    
+    const data = {
+        name: addName.value, 
+        link: addImage.value
+    }
+    cardElements.prepend(getCardElement(data))
+    addForm.reset()
 }
+
 addForm.addEventListener('submit', handleSubmit)
 
-function handelElement(htmlElement) {
-    htmlElement.querySelector('.element__close').addEventListener('click', delButton)
-    htmlElement.querySelector('.element__vector').addEventListener('click', function(evt) {
-        evt.target.classList.toggle('element__vector_active')
+function setListeners(htmlElement) {
+    htmlElement.querySelector('.element__close').addEventListener('click', delButton)    
+    htmlElement.querySelector('.element__image').addEventListener('click', (open) => {
+        openPopup(popupTypeImage)
+        openImage(open)
     })
-    
-    htmlElement.querySelector('.element__image').addEventListener('click', handeladdImag)
-    htmlElement.querySelector('.element__image').addEventListener('click', openImage)
+    addLike(htmlElement)    
 }
 
 function openImage(evt) {
@@ -139,6 +157,12 @@ function openImage(evt) {
 }
 
 addCardElement()
+
+function addLike(elementLike) {
+    elementLike.querySelector('.element__vector').addEventListener('click', function(evt) {
+        evt.target.classList.toggle('element__vector_active')
+    })
+}
 
 function delButton(evt) {
     evt.target.closest('.element').remove()
