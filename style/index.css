@@ -31,9 +31,9 @@
 @import url(../blocks/form-mesto/__submint/form-mesto__submit.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__close/popup__close.css);
-@import url(../blocks/popup/__content/_container/popup__content_container.css);
-@import url(../blocks/popup/__content/_close/popup__content_close.css);
-@import url(../blocks/popup/__content/_text/popup__content_text.css);
-@import url(../blocks/popup/__content/_card/popup__content_card.css);
+@import url(../blocks/image-container/image-container.css);
+@import url(../blocks/image-container/__close/image-container__close.css);
+@import url(../blocks/image-container/__text/image-container__text.css);
+@import url(../blocks/image-container/__card/image-container__card.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__content/_content/popup__content_content_image.css);
