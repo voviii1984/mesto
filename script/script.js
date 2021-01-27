@@ -63,9 +63,7 @@ openButton.addEventListener('click', () => {
 closeButton.addEventListener('click', () => {
     closePopup(popupTypeEdit)
 })
-saveElement.addEventListener('click', () => {
-    closePopup(popupTypeEdit)
-})
+
 popupTypeEdit.addEventListener('click', (evt) => {
     if (evt.target === evt.currentTarget) {
         closePopup(popupTypeEdit)
@@ -78,9 +76,7 @@ addButton.addEventListener('click', () => {
 closeAddButton.addEventListener('click', () => {
     closePopup(popupTypeAddCard)
 })
-saveAddCard.addEventListener('click', () => {
-    closePopup(popupTypeAddCard)
-})
+
 popupTypeAddCard.addEventListener('click', (evt) => {
     if (evt.target === evt.currentTarget) {
         closePopup(popupTypeAddCard)
@@ -105,7 +101,8 @@ addProfileInfo()
 function handleFormSubmit (evt) {
     evt.preventDefault();
     profileinfotitle.textContent = inputName.value
-    profileinfotext.textContent = inputJob.value    
+    profileinfotext.textContent = inputJob.value
+    closePopup(popupTypeEdit)   
 }
 
 formElement.addEventListener('submit', handleFormSubmit);
@@ -136,6 +133,7 @@ function handleSubmit (evt) {
         name: addName.value, 
         link: addImage.value
     }
+    closePopup(popupTypeAddCard)
     cardElements.prepend(getCardElement(data))
     addForm.reset()
 }
