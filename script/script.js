@@ -108,10 +108,9 @@ popupContentContentImage.addEventListener('click', (evt) => {
 })
 
 const closeEsc = function (evt) {
+    const activePopup = document.querySelector('.popup_opened')
     if(evt.key === 'Escape') {
-        closePopup(popupTypeEdit)
-        closePopup(popupTypeAddCard)
-        closePopup(popupTypeImage)
+        closePopup(activePopup)
     }
 } 
 
@@ -156,10 +155,12 @@ function handleSubmit (evt) {
         name: addName.value, 
         link: addImage.value
     }
+    
     closePopup(popupTypeAddCard)
     cardElements.prepend(getCardElement(data))
     formImage.reset()
-}
+    enableValidation(parametrValid)
+}    
 
 formImage.addEventListener('submit', handleSubmit)
 
