@@ -37,3 +37,6 @@
 @import url(../blocks/image-container/__card/image-container__card.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__content/_content/popup__content_content_image.css);
+@import url(../blocks/form/__input-error/form__input-error_active.css);
+@import url(../blocks/form-text/__error/form-text__error.css);
+@import url(../blocks/button/_inactive/button_inactive.css);
