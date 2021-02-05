@@ -47,10 +47,12 @@
     <section class="popup popup_type_edit">
       <div class="popup__container">
         <h2 class="popup__container-title">Редактировать профиль</h2>
-        <form class="form">
-          <input type="text" id="inputName" minlength="8" name="username" required placeholder="Фамилия Имя Отчество" class="form-text"/>
-          <input type="text" id="inputJob" required placeholder="Место работы" class="form-text"/>
-          <button type="submit" id="saveElement" class="form__submit">Сохранить</button>
+        <form class="popup__form form" novalidate>
+          <input type="text" id="inputName" minlength="2" maxlength="40" name="username" required placeholder="Фамилия Имя Отчество" class="form-text"/>
+          <span id="inputNameError" class="error"></span>
+          <input type="text" id="inputJob" minlength="2" maxlength="200" required placeholder="Место работы" class="form-text"/>
+          <span id="inputJobError" class="error"></span>
+          <button type="submit" id="saveElement" class="popup__button form__submit" disabled>Сохранить</button>
         </form>
         <button type="reset" class="popup__close"></button>
       </div>
@@ -59,10 +61,12 @@
     <section class="popup popup_type_add-card">
       <div class="popup__container">
         <h2 class="popup__container-title">Новое место</h2>
-        <form id="addForm" class="form-mesto">
-          <input type="text" id="addName" required class="form-text" placeholder="Название"/>
-          <input type="text" id="addImage" required class="form-text" placeholder="Ссылка на картинку"/>
-          <button type="submit" id="saveAddCard" class="form-mesto__submit">Создать</button>
+        <form id="formImage" class="popup__form form-mesto" novalidate>          
+           <input type="text" id="addName" required minlength="2" maxlength="30" class="form-text" placeholder="Название"/>
+           <span id="addNameError" class="error"></span>
+           <input type="url" id="addImage" required class="form-text" placeholder="Ссылка на картинку"/>
+           <span id="addImageError" class="error"></span>
+           <button type="submit" id="saveAddCard" class="popup__button form-mesto__submit" disabled>Создать</button>
         </form>
         <button type="reset" id="closeAddButton" class="popup__close"></button>
       </div>
@@ -78,6 +82,9 @@
       </div>
     </section>
   </div>
-<script src="./script/script.js"></script> 
+
+<script src="./script/validate.js"></script>  
+<script src="./script/script.js"></script>
+ 
 </body>
 </html>
