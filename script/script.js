@@ -29,7 +29,8 @@ const openButton = document.querySelector('.profile__popup-button')
 const popupTypeEdit = document.querySelector('.popup_type_edit')
 const closeButton = document.querySelector('.popup__close')
 const saveElement = document.getElementById('saveElement')
-const formElement = document.querySelector('.form')
+const formText = document.querySelector('.form')
+const formImage = document.getElementById('formImage')
 const profileinfotitle = document.querySelector('.profile__info-title')
 const profileinfotext = document.querySelector('.profile__info-text')
 const inputName = document.getElementById('inputName')
@@ -43,23 +44,35 @@ const addName = document.getElementById('addName')
 const elementsTemplate = document.querySelector('.card__template').content
 const cardElements = document.querySelector('.elements')
 const saveAddCard = document.getElementById('saveAddCard')
-const addForm = document.getElementById('addForm')
 const popupTypeImage = document.querySelector('.popup_type_image')
 const imageContainerCard = document.querySelector('.image-container__card')
 const imageContainerText = document.querySelector('.image-container__text')
 const popupContentContentImage = document.querySelector('.popup__content_content_image')
 
+
+const parametrValid = {
+    formSelector: '.popup__form',
+    submitButtonSelector: '.popup__button',
+    inputSelector: '.form-text',
+    inputErrorClass: 'form-text__error',
+    inactiveButtonClass: 'button_inactive',
+    errorClass: 'form__input-error_active'
+}
+
 const openPopup = (popup) => {
     popup.classList.add('popup_opened')
+    document.addEventListener('keydown', closeEsc)
 }
 
 const closePopup = (popup) => {
     popup.classList.remove('popup_opened')
+    document.removeEventListener('keydown', closeEsc)
 }
 
 openButton.addEventListener('click', () => {
     openPopup(popupTypeEdit)
 })
+
 closeButton.addEventListener('click', () => {
     closePopup(popupTypeEdit)
 })
@@ -73,6 +86,7 @@ popupTypeEdit.addEventListener('click', (evt) => {
 addButton.addEventListener('click', () => {
     openPopup(popupTypeAddCard)
 })
+
 closeAddButton.addEventListener('click', () => {
     closePopup(popupTypeAddCard)
 })
@@ -86,11 +100,20 @@ popupTypeAddCard.addEventListener('click', (evt) => {
 closeImageButton.addEventListener('click', () => {
     closePopup(popupTypeImage)
 })
+
 popupContentContentImage.addEventListener('click', (evt) => {
     if (evt.target === evt.currentTarget) {
         closePopup(popupTypeImage)
     }
 })
+
+const closeEsc = function (evt) {
+    if(evt.key === 'Escape') {
+        closePopup(popupTypeEdit)
+        closePopup(popupTypeAddCard)
+        closePopup(popupTypeImage)
+    }
+} 
 
 function addProfileInfo() {
     inputName.value = profileinfotitle.textContent
@@ -105,7 +128,7 @@ function handleFormSubmit (evt) {
     closePopup(popupTypeEdit)   
 }
 
-formElement.addEventListener('submit', handleFormSubmit);
+formText.addEventListener('submit', handleFormSubmit);
 
 function addCardElement() {
     initialCards.forEach((data) => {
@@ -135,10 +158,10 @@ function handleSubmit (evt) {
     }
     closePopup(popupTypeAddCard)
     cardElements.prepend(getCardElement(data))
-    addForm.reset()
+    formImage.reset()
 }
 
-addForm.addEventListener('submit', handleSubmit)
+formImage.addEventListener('submit', handleSubmit)
 
 function setListeners(htmlElement) {
     htmlElement.querySelector('.element__close').addEventListener('click', delButton)    
@@ -165,3 +188,5 @@ function addLike(elementLike) {
 function delButton(evt) {
     evt.target.closest('.element').remove()
 }
+
+enableValidation(parametrValid)
