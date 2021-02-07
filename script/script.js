@@ -159,7 +159,8 @@ function handleSubmit (evt) {
     closePopup(popupTypeAddCard)
     cardElements.prepend(getCardElement(data))
     formImage.reset()
-    enableValidation(parametrValid)
+    saveAddCard.setAttribute('disabled', false)
+    saveAddCard.classList.add(parametrValid.inactiveButtonClass)
 }    
 
 formImage.addEventListener('submit', handleSubmit)
