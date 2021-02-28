@@ -49,6 +49,8 @@ const imageContainerCard = document.querySelector('.image-container__card')
 const imageContainerText = document.querySelector('.image-container__text')
 const popupContentContentImage = document.querySelector('.popup__content_content_image')
 
+export {parametrValid, formImage, cardElements, popupTypeAddCard, closePopup, saveAddCard, popupTypeImage, openPopup, addImage, addName, elementsTemplate, imageContainerCard, imageContainerText};
+import {FormValidator} from './formValidator.js';
 
 const parametrValid = {
     formSelector: '.popup__form',
@@ -58,6 +60,7 @@ const parametrValid = {
     inactiveButtonClass: 'button_inactive',
     errorClass: 'form__input-error_active'
 }
+const formList = Array.from(document.querySelectorAll(parametrValid.formSelector))
 
 const openPopup = (popup) => {
     popup.classList.add('popup_opened')
@@ -129,66 +132,22 @@ function handleFormSubmit (evt) {
 
 formText.addEventListener('submit', handleFormSubmit);
 
-function addCardElement() {
-    initialCards.forEach((data) => {
-        const card = getCardElement(data)
-        renderCards(card)    
-     })
-}
+import {Card} from './card.js';
 
-function getCardElement(item) {
-    const htmlElement = elementsTemplate.cloneNode(true)
-    htmlElement.querySelector('.element__text').textContent = item.name
-    htmlElement.querySelector('.element__image').src = item.link
-    
-    setListeners(htmlElement)
-    return htmlElement
-}
+formImage.addEventListener('submit', (evt) => {
+    const cardImage = new Card(evt);
 
-function renderCards(add) {
-    return cardElements.appendChild(add)
-}
+    cardImage._handleSubmit(evt);
+});
 
-function handleSubmit (evt) {
-    evt.preventDefault()
-    const data = {
-        name: addName.value, 
-        link: addImage.value
-    }
-    
-    closePopup(popupTypeAddCard)
-    cardElements.prepend(getCardElement(data))
-    formImage.reset()
-    saveAddCard.setAttribute('disabled', false)
-    saveAddCard.classList.add(parametrValid.inactiveButtonClass)
-}    
+initialCards.forEach((item) => {
+    const card = new Card(item);
+    const cardElement = card.addCardElement();
 
-formImage.addEventListener('submit', handleSubmit)
-
-function setListeners(htmlElement) {
-    htmlElement.querySelector('.element__close').addEventListener('click', delButton)    
-    htmlElement.querySelector('.element__image').addEventListener('click', (open) => {
-        openPopup(popupTypeImage)
-        openImage(open)
-    })
-    addLike(htmlElement)    
-}
-
-function openImage(evt) {
-    imageContainerCard.src = evt.target.closest('.element').querySelector('.element__image').src
-    imageContainerText.textContent = evt.target.closest('.element').querySelector('.element__text').textContent
-}
-
-addCardElement()
-
-function addLike(elementLike) {
-    elementLike.querySelector('.element__vector').addEventListener('click', function(evt) {
-        evt.target.classList.toggle('element__vector_active')
-    })
-}
-
-function delButton(evt) {
-    evt.target.closest('.element').remove()
-}
-
-enableValidation(parametrValid)
+    cardElements.appendChild(cardElement);
+ });
+ 
+formList.forEach((formText) => {
+    const validate = new FormValidator(parametrValid, formText);
+    validate.enableValidation();      
+});
