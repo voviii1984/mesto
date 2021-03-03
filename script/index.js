@@ -27,8 +27,8 @@ const initialCards = [
   
 const openButton = document.querySelector('.profile__popup-button')
 const popupTypeEdit = document.querySelector('.popup_type_edit')
+const typeEdit = popupTypeEdit.querySelector('.popup__form')
 const closeButton = document.querySelector('.popup__close')
-const saveElement = document.getElementById('saveElement')
 const formText = document.querySelector('.form')
 const formImage = document.getElementById('formImage')
 const profileinfotitle = document.querySelector('.profile__info-title')
@@ -37,6 +37,7 @@ const inputName = document.getElementById('inputName')
 const inputJob = document.getElementById('inputJob')
 const addButton = document.querySelector('.profile__add-button')
 const popupTypeAddCard = document.querySelector('.popup_type_add-card')
+const typeAddCard = popupTypeAddCard.querySelector('.popup__form')
 const closeAddButton = document.getElementById('closeAddButton')
 const closeImageButton = document.getElementById('closeImageButton')
 const addImage = document.getElementById('addImage')
@@ -60,7 +61,6 @@ const parametrValid = {
     inactiveButtonClass: 'button_inactive',
     errorClass: 'form__input-error_active'
 }
-const formList = Array.from(document.querySelectorAll(parametrValid.formSelector))
 
 const openPopup = (popup) => {
     popup.classList.add('popup_opened')
@@ -134,20 +134,35 @@ formText.addEventListener('submit', handleFormSubmit);
 
 import {Card} from './card.js';
 
-formImage.addEventListener('submit', (evt) => {
-    const cardImage = new Card(evt);
+function handleSubmit (evt) {
+    evt.preventDefault()
+    
+    const data = {
+        name: addName.value, 
+        link: addImage.value
+    }
+    
+    const card = new Card(data, '.card__template_type_default');
+    const cardElement = card.addCardElement();
+    
+    closePopup(popupTypeAddCard)
+    cardElements.prepend(cardElement)
+    formImage.reset()
+    saveAddCard.setAttribute('disabled', false)
+    saveAddCard.classList.add(parametrValid.inactiveButtonClass)
+}    
 
-    cardImage._handleSubmit(evt);
-});
-
-initialCards.forEach((item) => {
-    const card = new Card(item);
+formImage.addEventListener('submit', handleSubmit);
+    
+initialCards.forEach((item) => {    
+    const card = new Card(item, '.card__template_type_default');
     const cardElement = card.addCardElement();
 
     cardElements.appendChild(cardElement);
- });
- 
-formList.forEach((formText) => {
-    const validate = new FormValidator(parametrValid, formText);
-    validate.enableValidation();      
 });
+
+const profileValidate = new FormValidator(parametrValid, typeEdit);
+profileValidate.enableValidation();
+
+const imageValidate = new FormValidator(parametrValid, typeAddCard);
+imageValidate.enableValidation();

@@ -1,12 +1,12 @@
 export class FormValidator {
-    constructor(data, formElement) {
-        this._formSelector = data.formSelector;
+    constructor(data, formSelector) {
+        this._formSelector = data.formSelector
         this._submitButtonSelector = data.submitButtonSelector;
         this._inputSelector = data.inputSelector;
         this._inputErrorClass = data.inputErrorClass;
         this._inactiveButtonClass = data.inactiveButtonClass;
         this._errorClass = data.errorClass;
-        this._formElement = formElement;        
+        this._formElement = formSelector;        
     }
 
     _showInputError(formText, formTextInput, errorMessage) {
@@ -61,8 +61,12 @@ export class FormValidator {
         });
     };
 
-    enableValidation() {
-        this._setEventListeners();       
+    enableValidation() {         
+        this._formElement.addEventListener('submit', (evt) => {
+                evt.preventDefault();
+            });
+
+        this._setEventListeners();              
     };
 };
 
