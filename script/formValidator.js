@@ -6,7 +6,7 @@ export class FormValidator {
         this._inputErrorClass = data.inputErrorClass;
         this._inactiveButtonClass = data.inactiveButtonClass;
         this._errorClass = data.errorClass;
-        this._formElement = formSelector;        
+        this._formElement = formSelector;
     }
 
     _showInputError(formText, formTextInput, errorMessage) {
@@ -61,6 +61,10 @@ export class FormValidator {
         });
     };
 
+    errorValidation() {
+        this._toggleButtonState()
+    }
+
     enableValidation() {         
         this._formElement.addEventListener('submit', (evt) => {
                 evt.preventDefault();
@@ -69,4 +73,3 @@ export class FormValidator {
         this._setEventListeners();              
     };
 };
-

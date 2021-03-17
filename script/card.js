@@ -1,8 +1,9 @@
 export class Card {
-    constructor(data, cardSelector) {
+    constructor({data, cardSelector, handleCardClick}) {
         this._name = data.name;
         this._link = data.link;
         this._cardSelector = document.querySelector(cardSelector);
+        this._handleCardClick = handleCardClick;
     }
 
     addCardElement() {        
@@ -24,17 +25,11 @@ export class Card {
         this._delButton();        
 
         this._element.querySelector('.element__image').addEventListener('click', () => {
-            this._openImage();
+            this._handleCardClick();
         });
 
         this._like();            
-    }
-
-    _openImage() {
-        imageContainerCard.src = this._link;
-        imageContainerText.textContent = this._name;
-        openPopup(popupTypeImage);
-    };
+    }    
 
     _delButton() {
         this._element.querySelector('.element__close').addEventListener('click', (evt) => {
@@ -48,5 +43,3 @@ export class Card {
         });
     };    
 }
-
-import {popupTypeImage, openPopup, imageContainerCard, imageContainerText} from './utils.js';
