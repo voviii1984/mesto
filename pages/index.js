@@ -1,6 +1,6 @@
-import '../style/index.css'
+import './index.css'
 import Section from '../components/section.js';
-import {FormValidator} from '../script/formValidator.js';
+import {FormValidator} from '../components/formValidator.js';
 import {initialCards, 
         openButton,
         typeEdit,
@@ -18,7 +18,7 @@ import {initialCards,
         parametrValid
 } from '../utils/constants.js'
 
-import {Card} from '../script/card.js';
+import {Card} from '../components/card.js';
 import PopupWithForm from '../components/PopupWithForm.js'
 import PopupWithImage from '../components/popupWithImage.js'
 import UserInfo from '../components/userInfo.js'
@@ -29,20 +29,25 @@ const popupImage = new PopupWithImage(popupTypeImage)
 const selectorUserInfo = new UserInfo({selectorinputName: profileinfotitle, selectorinputJob: profileinfotext})
 
 const profileValidate = new FormValidator(parametrValid, typeEdit);
+
 const imageValidate = new FormValidator(parametrValid, typeAddCard);
+
 
 addButton.addEventListener('click', () => {
     popupFormCard.open();
+    imageValidate.errorValidation()
 })
 
 openButton.addEventListener('click', addProfileInfo)
 
 function addProfileInfo() {
     popupFormAbout.open();
+    
     const addUser = selectorUserInfo.getUserInfo();
     inputName.value = addUser.popupInputName;
     inputJob.value = addUser.popupInputJob;
-    profileValidate.errorValidation()
+    
+    profileValidate.errorValidation();    
 }
 
 function handleFormSubmit () {
@@ -65,10 +70,9 @@ function handleSubmit () {
         link: addImage.value
     }    
       
-    popupFormCard.close()
-    document.querySelector(cardElements).prepend(addCard(data))
-    formImage.reset()
-    imageValidate.errorValidation()
+    popupFormCard.close();
+    document.querySelector(cardElements).prepend(addCard(data));    
+    formImage.reset();    
 }    
 
 const addCardList = new Section({items: initialCards, renderer: (item) => {    
