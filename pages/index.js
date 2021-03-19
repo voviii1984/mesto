@@ -29,13 +29,15 @@ const popupImage = new PopupWithImage(popupTypeImage)
 const selectorUserInfo = new UserInfo({selectorinputName: profileinfotitle, selectorinputJob: profileinfotext})
 
 const profileValidate = new FormValidator(parametrValid, typeEdit);
-
 const imageValidate = new FormValidator(parametrValid, typeAddCard);
 
+popupImage.setEventListeners();
+popupFormAbout.setEventListeners();
+popupFormCard.setEventListeners();
 
 addButton.addEventListener('click', () => {
     popupFormCard.open();
-    imageValidate.errorValidation()
+    imageValidate._changeButtonStateByValidation()
 })
 
 openButton.addEventListener('click', addProfileInfo)
@@ -47,7 +49,7 @@ function addProfileInfo() {
     inputName.value = addUser.popupInputName;
     inputJob.value = addUser.popupInputJob;
     
-    profileValidate.errorValidation();    
+    profileValidate._changeButtonStateByValidation();    
 }
 
 function handleFormSubmit () {
@@ -55,7 +57,7 @@ function handleFormSubmit () {
     popupFormAbout.close()   
 }
 
-function addCard (item) {
+function createCard (item) {
     const card = new Card({data: item, cardSelector: '.card__template_type_default', handleCardClick: () => {
         popupImage.open(item)
         }
@@ -64,19 +66,23 @@ function addCard (item) {
     return cardElement;
 }
 
+function addCardSubmit (item) {
+    const dataCardsElements = document.querySelector(cardElements);
+    popupFormCard.close();
+    dataCardsElements.prepend(createCard(item));    
+    formImage.reset(); 
+}
+
 function handleSubmit () {    
     const data = {
         name: addName.value, 
         link: addImage.value
     }    
-      
-    popupFormCard.close();
-    document.querySelector(cardElements).prepend(addCard(data));    
-    formImage.reset();    
+    addCardSubmit(data);    
 }    
 
 const addCardList = new Section({items: initialCards, renderer: (item) => {    
-    addCardList.addItem(addCard(item));
+    addCardList.addItem(createCard(item));
     }
 }, cardElements);
 

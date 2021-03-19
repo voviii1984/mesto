@@ -8,10 +8,12 @@ export class Card {
 
     addCardElement() {        
         this._element = this._getCardElement();
+        this._elementImage = this._element.querySelector('.element__image');
         this._setListeners();
 
         this._element.querySelector('.element__text').textContent = this._name;
-        this._element.querySelector('.element__image').src = this._link;
+        this._elementImage.src = this._link;
+        this._elementImage.alt = this._name;
         
         return this._element;
     }
@@ -22,16 +24,16 @@ export class Card {
     }
 
     _setListeners() {
-        this._delButton();        
+        this._deleteCard();        
 
-        this._element.querySelector('.element__image').addEventListener('click', () => {
+        this._elementImage.addEventListener('click', () => {
             this._handleCardClick();
         });
 
         this._like();            
     }    
 
-    _delButton() {
+    _deleteCard() {
         this._element.querySelector('.element__close').addEventListener('click', (evt) => {
             this._element.remove();
         });        
