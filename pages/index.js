@@ -15,7 +15,9 @@ import {initialCards,
         addName,    
         cardElements,
         popupTypeImage,
-        parametrValid
+        parametrValid,
+        cardTemplateTypeDefault,
+        dataCardsElements
 } from '../utils/constants.js'
 
 import {Card} from '../components/card.js';
@@ -37,7 +39,7 @@ popupFormCard.setEventListeners();
 
 addButton.addEventListener('click', () => {
     popupFormCard.open();
-    imageValidate._changeButtonStateByValidation()
+    imageValidate.changeButtonStateByValidation()
 })
 
 openButton.addEventListener('click', addProfileInfo)
@@ -49,7 +51,7 @@ function addProfileInfo() {
     inputName.value = addUser.popupInputName;
     inputJob.value = addUser.popupInputJob;
     
-    profileValidate._changeButtonStateByValidation();    
+    profileValidate.changeButtonStateByValidation();    
 }
 
 function handleFormSubmit () {
@@ -58,7 +60,7 @@ function handleFormSubmit () {
 }
 
 function createCard (item) {
-    const card = new Card({data: item, cardSelector: '.card__template_type_default', handleCardClick: () => {
+    const card = new Card({data: item, cardSelector: cardTemplateTypeDefault, handleCardClick: () => {
         popupImage.open(item)
         }
     });
@@ -66,8 +68,7 @@ function createCard (item) {
     return cardElement;
 }
 
-function addCardSubmit (item) {
-    const dataCardsElements = document.querySelector(cardElements);
+function addCardSubmit (item) {    
     popupFormCard.close();
     dataCardsElements.prepend(createCard(item));    
     formImage.reset(); 
