@@ -67,7 +67,7 @@ export class FormValidator {
         });
     };
 
-    _changeButtonStateByValidation() {
+    changeButtonStateByValidation() {
         this._checkValid();
         this._toggleButtonState();
     };

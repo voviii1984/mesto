@@ -41,6 +41,8 @@ export const addName = document.getElementById('addName')
 export const elementsTemplate = document.querySelector('.card__template').content
 export const cardElements = '.elements'
 export const popupTypeImage = '.popup_type_image'
+export const cardTemplateTypeDefault = '.card__template_type_default'
+export const dataCardsElements = document.querySelector(cardElements);
 
 export const parametrValid = {
     formSelector: '.popup__form',
