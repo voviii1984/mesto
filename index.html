@@ -13,7 +13,9 @@
 
     <main class="content">
       <section class="profile">
-        <img src="./images/kusto.jpg" alt="Жак-Ив Кусто" class="profile__avatar">
+        <div class="profile__avatar_change">
+          <img src="#" alt="Жак-Ив Кусто" class="profile__avatar">
+        </div>
         <div class="profile__info">
           <div class="profile__infos">
           <h1 class="profile__info-title">Жак-Ив Кусто</h1>
@@ -32,7 +34,10 @@
             <button type="reset" class="element__close"></button>
             <div class="element__group">
               <h2 class="element__text"></h2>
-              <button type="button" name="Like" class="element__vector"></button>
+              <div class="element__like">
+                <button type="button" name="Like" class="element__vector"></button>
+                <p class="element__number"></p>
+              </div>
             </div>
           </div>
         </template>
@@ -51,7 +56,7 @@
           <span id="inputNameError" class="error"></span>
           <input type="text" id="inputJob" minlength="2" maxlength="200" required placeholder="Место работы" class="form-text"/>
           <span id="inputJobError" class="error"></span>
-          <button type="submit" id="saveElement" class="popup__button form__submit" disabled>Сохранить</button>
+          <button type="submit" id="saveElement" class="popup__button form__submit popup__button-check" disabled>Сохранить</button>
         </form>
         <button type="reset" class="popup__close"></button>
       </div>
@@ -65,9 +70,31 @@
            <span id="addNameError" class="error"></span>
            <input type="url" id="addImage" required class="form-text" placeholder="Ссылка на картинку"/>
            <span id="addImageError" class="error"></span>
-           <button type="submit" id="saveAddCard" class="popup__button form-mesto__submit" disabled>Создать</button>
+           <button type="submit" id="saveAddCard" class="popup__button form-mesto__submit popup__button-check" disabled>Создать</button>
         </form>
         <button type="reset" id="closeAddButton" class="popup__close"></button>
+      </div>
+    </section>
+
+    <section class="popup popup_type_avatar">
+      <div class="popup__container">
+        <h2 class="popup__container-title">Обновить аватар</h2>
+        <form id="formAvatar" class="popup__form form-avatar" novalidate>          
+           <input type="url" id="addAvatar" required class="form-text" placeholder="Аватар"/>
+           <span id="addAvatarError" class="error"></span>         
+           <button type="submit" id="saveAvatar" class="popup__button form-avatar__submit popup__button-check" disabled>Сохранить</button>
+        </form>
+        <button type="reset" id="closeAvatar" class="popup__close"></button>
+      </div>
+    </section>
+
+    <section class="popup popup_type_delete">
+      <div class="popup__container">
+        <h2 class="popup__container-title">Вы уверены?</h2>
+        <form id="formDelete" class="popup__form form-delete" novalidate>
+          <button type="submit" id="deleteCard" class="popup__button form-delete__submit">Да</button>
+        </form>
+        <button type="reset" id="closeAvatar" class="popup__close"></button>
       </div>
     </section>
 
@@ -79,6 +106,6 @@
         </div>      
     </section>
   </div>  
- 
+  
 </body>
 </html>
