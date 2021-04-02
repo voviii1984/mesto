@@ -1,10 +1,10 @@
-.profile__avatar_change {
+.profile__change {
     max-width: 120px;
     max-height: 120px;
 }
 
-.profile__avatar_change:hover {
-    background-image: url(../../../../images/Vector.png);
+.profile__change:hover {
+    background-image: url(../../../images/Vector.png);
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
@@ -13,7 +13,7 @@
 }
 
 @media screen and (max-width: 618px) {
-    .profile__avatar_change {
+    .profile__change {
       margin: auto;
     }
   }
