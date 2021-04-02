@@ -27,7 +27,7 @@ export const cardElements = '.elements'
 export const popupTypeImage = '.popup_type_image'
 export const cardTemplateTypeDefault = '.card__template_type_default'
 export const dataCardsElements = document.querySelector(cardElements);
-export const profileAvatarChange = document.querySelector('.profile__avatar_change');
+export const profileAvatarChange = document.querySelector('.profile__change');
 export const addAvatar = document.getElementById('addAvatar');
 //export const popupButton = document.querySelector('.popup__button')
 
