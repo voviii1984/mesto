@@ -1,7 +1,8 @@
 export default class UserInfo {
-    constructor({selectorinputName, selectorinputJob}) {        
+    constructor({selectorinputName, selectorinputJob, selectorAvatarUser}) {        
         this._popupInputName = document.querySelector(selectorinputName);
         this._popupInputJob = document.querySelector(selectorinputJob);
+        this._avatarUser = document.querySelector(selectorAvatarUser);
     }
 
     getUserInfo() {
@@ -10,9 +11,12 @@ export default class UserInfo {
         }
     }
 
-    setUserInfo({inputName, inputJob}) {
-        this._popupInputName.textContent = inputName;
-        this._popupInputJob.textContent = inputJob;
-        
+    setUserInfo(data) {
+        this._popupInputName.textContent = data.name;
+        this._popupInputJob.textContent = data.about;        
+    }
+
+    getAvatarUser(data) {
+        this._avatarUser.src = data.avatar;
     }
 }
