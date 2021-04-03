@@ -1,4 +1,4 @@
-import {Api} from './api.js'
+import {Api} from '../components/api.js'
 import './index.css'
 import Section from '../components/section.js';
 import {FormValidator} from '../components/formValidator.js';
@@ -17,7 +17,6 @@ import {openButton,
         popupTypeImage,
         parametrValid,
         cardTemplateTypeDefault,
-        dataCardsElements,
         profileAvatarChange,
         addAvatar,
         profileAvatar,
@@ -112,7 +111,7 @@ function addNewAvatar () {
     
     api.putAvatar(dataAvatar)
     .then((dataAvatar) => {        
-        selectorUserInfo.getAvatarUser(dataAvatar)
+        selectorUserInfo.setAvatarUser(dataAvatar)
         popupFormAvatar.close()
         
     })
@@ -191,7 +190,7 @@ function handleSubmit () {
     api.getNewCard(data)
     .then((data) => {
         addCardSubmit();
-        dataCardsElements.prepend(createCard(data, myCards));        
+        addCardList.addItem(createCard(data, myCards));        
     })   
     .catch((err) => {
         console.log(`Ошибка: ${err}`); // выведем ошибку в консоль
@@ -212,7 +211,7 @@ Promise.all([api.getInitialCards(), api.userInfo()])
 
         addCardList.renderItems(cards);
         selectorUserInfo.setUserInfo(getuserInfo);
-        selectorUserInfo.getAvatarUser(getuserInfo);        
+        selectorUserInfo.setAvatarUser(getuserInfo);        
     })
     .catch((err) => {
         console.log(`Ошибка: ${err}`); // выведем ошибку в консоль

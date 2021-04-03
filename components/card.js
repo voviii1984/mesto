@@ -69,9 +69,7 @@ export class Card {
       }
     
     myLike(data) {
-        this._like = data.likes.filter((item) => {
-          return this._myCards === item._id;
-        }).length;
+        this._like = data.likes.some(item => this._myCards === item._id);
         this._elementNumber.textContent = data.likes.length;
 
         if (this._like) {
