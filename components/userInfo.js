@@ -16,7 +16,7 @@ export default class UserInfo {
         this._popupInputJob.textContent = data.about;        
     }
 
-    getAvatarUser(data) {
+    setAvatarUser(data) {
         this._avatarUser.src = data.avatar;
     }
 }
