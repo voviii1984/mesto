@@ -14,8 +14,7 @@ export class Api{
             }
 
             return Promise.reject(`Ошибка: ${res.status}`)
-        })
-        .catch(err => Promise.reject(err))
+        })        
     }
 
     userInfo() {
