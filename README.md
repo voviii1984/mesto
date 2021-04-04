@@ -8,4 +8,4 @@
 
 
 
-Ознакомиься с работой, можно поссылке [МЕСТО](https://voviii1984.github.io/mesto/index.html).
+Ознакомиься с работой, можно поссылке [МЕСТО](https://voviii1984.github.io/mesto/).
